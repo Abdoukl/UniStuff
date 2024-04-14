@@ -15,7 +15,6 @@ void displayAllStudents(FILE *file)
 {
     Student student;
     rewind(file); // Move the file pointer to the beginning
-    fseek(file, 0, SEEK_SET);
     printf("\n%-20s %-20s %-10s %-10s\n", "First Name", "Last Name", "Group", "Overall Grade");
     printf("------------------------------------------------------------------\n");
 
@@ -24,7 +23,6 @@ void displayAllStudents(FILE *file)
         printf("%-20s %-20s %-10d %-10.2f\n", student.firstName, student.lastName, student.group, student.overallGrade);
         printf("----------------------------------------------------------------\n");
     }
-    
 }
 
 // Function to add a student to the file and maintain sorting by group
@@ -112,7 +110,6 @@ void deleteStudent(FILE *file, char* openingPath, char* tempPath)
 
     fclose(file);
     fclose(tempFile);
-
     // Replace the original file with the temporary file
     remove(openingPath);
     rename(tempPath, openingPath);
@@ -273,7 +270,7 @@ int main()
                 fclose(studentFile);
                 break;
             case 2:
-                 system("cls");
+                system("cls");
                 addStudent(studentFile, openingFilePath, tempfilePath);
                 break;
             case 3:
@@ -292,7 +289,7 @@ int main()
                 fclose(studentFile);
                 break;
             case 6:
-                 system("cls");
+                system("cls");
                 searchByGroup(studentFile);
                 fclose(studentFile);
                 break;
